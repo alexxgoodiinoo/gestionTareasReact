@@ -1,4 +1,8 @@
-function TaskList({ tasks, onEditTask, onDeleteTask, onToggleTask, filtro = null }) {
+import { useContext } from "react";
+import { TaskContext } from "../Context/TaskContext";
+
+function TaskList({ filtro = null }) {
+  const {tasks, editTask, deleteTask, toggleTask} = useContext(TaskContext)
   let tareaFiltrada = tasks;
   if(filtro){
     const filtroActual = filtro === 'true' ? true:false;
@@ -12,8 +16,7 @@ function TaskList({ tasks, onEditTask, onDeleteTask, onToggleTask, filtro = null
       inputValue: texto
     });
     if(newContent){
-      console.log(newContent);
-      onEditTask(index, newContent);
+      editTask(index, newContent);
     }
   }
   return (
@@ -23,7 +26,7 @@ function TaskList({ tasks, onEditTask, onDeleteTask, onToggleTask, filtro = null
           <input
             type="checkbox"
             checked={task.completed}
-            onChange={() => onToggleTask(index)}
+            onChange={() => toggleTask(index)}
           />
           <span
             style={{
@@ -33,7 +36,7 @@ function TaskList({ tasks, onEditTask, onDeleteTask, onToggleTask, filtro = null
             {task.text}
           </span>
           <button class="editar" onClick={() => botonEditar(index, task.text)}>Editar</button>
-          <button onClick={() => onDeleteTask(index)}>Eliminar</button>
+          <button onClick={() => deleteTask(index)}>Eliminar</button>
         </li>
       ))}
     </ul>
