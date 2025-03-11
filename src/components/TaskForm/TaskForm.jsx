@@ -2,7 +2,8 @@ import { useContext, useState } from "react";
 import { TaskContext } from "../Context/TaskContext";
 
 function TaskForm() {
-  const { addTask } = useContext(TaskContext);
+  {/* Recogemos las funciones del TaskContext */}
+  const { addTask } = useContext(TaskContext); 
   const [taskText, setTaskText] = useState("");
 
   const handleSubmit = (e) => {
@@ -15,6 +16,7 @@ function TaskForm() {
 
   return (
     <form onSubmit={handleSubmit}>
+      {/* De esta manera podemos añadir la tarea que nosotros queramos */}
       <input
         type="text"
         value={taskText}

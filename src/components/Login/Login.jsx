@@ -2,13 +2,14 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 
 function Login() {
-  const { login } = useContext(AuthContext);
+  const { login } = useContext(AuthContext); {/* Recogemos las funciones del AuthContext */}
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   const handleLogin = (e) => {
     e.preventDefault();
+    {/* Estas son las credenciales que vamos a usar para el inicio de sesión */}
     if (username === 'alex' && password === 'alex123') {
       login();
       setError('');
@@ -19,6 +20,7 @@ function Login() {
 
   return (
     <div>
+      {/* Y de esta manera mostramos el formulario del Login */}
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <label htmlFor="username">Usuario:</label>

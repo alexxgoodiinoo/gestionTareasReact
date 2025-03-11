@@ -2,7 +2,8 @@ import { useContext } from "react";
 import { TaskContext } from "../Context/TaskContext";
 
 function TaskList({ filtro = null }) {
-  const {tasks, editTask, deleteTask, toggleTask} = useContext(TaskContext)
+  {/* Recogemos las funciones del TaskContext */}
+  const {tasks, editTask, deleteTask, toggleTask} = useContext(TaskContext) 
   let tareaFiltrada = tasks;
   if(filtro){
     const filtroActual = filtro === 'true' ? true:false;
@@ -21,6 +22,7 @@ function TaskList({ filtro = null }) {
   }
   return (
     <ul>
+      {/* De esta manera listamos las tareas que tenemos, con la opcion de editarlas, eliminarlas o marcarlas como completadas */}
       {tareaFiltrada.map((task, index) => (
         <li key={index}>
           <input
